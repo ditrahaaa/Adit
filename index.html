@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Website Lucu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+img {
+  width: 150px;
+  transition: transform 0.3s;
+}
+
+.rolling {
+  animation: roll 1s infinite;
+}
+
+@keyframes roll {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #ccc;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Apakah kamu mau jadi pasangan aku? 💖</h1>
+    <img id="doll" src="https://cdn-icons-png.flaticon.com/512/742/742751.png" alt="boneka lucu">
+    <p id="text">Pilih yang benar yaaa 🥺</p>
+    <br>
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+  </div>  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const text = document.getElementById('text');
+    const doll = document.getElementById('doll');
+
+    let noClick = 0;
+
+    noBtn.addEventListener('click', () => {
+      noClick++;
+
+      if (noClick === 1) {
+        text.innerHTML = 'Jangan dong 😭';
+      } else if (noClick === 2) {
+        text.innerHTML = 'Ayooo pilih YES 🥺';
+      } else if (noClick === 3) {
+        text.innerHTML = 'Aku bakal sedih banget 😢';
+      } else if (noClick >= 4) {
+        text.innerHTML = 'YAHHHH 😭😭😭';
+        doll.classList.add('rolling');
+      }
+
+      // tombol NO kabur
+      noBtn.style.position = 'absolute';
+      noBtn.style.top = Math.random() * window.innerHeight + 'px';
+      noBtn.style.left = Math.random() * window.innerWidth + 'px';
+    });
+
+    yesBtn.addEventListener('click', () => {
+      text.innerHTML = 'YEAYYY 💖 Kamu milikku sekarang 😆';
+      doll.classList.remove('rolling');
+      doll.style.transform = 'scale(1.5)';
+      document.body.style.background = '#ff4d6d';
+    });
+  </script></body>
+</html>
